@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fridge Chef | 냉장고를 부탁해</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <script src="/static/script.js" defer></script>
+</head>
+<body>
+<header class="topbar"><div class="wrap top-inner"><a href="/" class="logo">🥬 Fridge <b>Chef</b></a><span class="tagline">우리 집 냉장고로 만드는 오늘의 한 끼</span></div></header>
+<main class="wrap">
+  <section class="hero"><span class="eyebrow">✨ AI RECIPE GENERATOR</span><h1>오늘 뭐 먹지? <span>🍳</span></h1><p>냉장고 속 재료를 입력하면 AI가 딱 맞는 레시피를 찾아드려요.</p></section>
+  <div class="layout">
+    <section class="card pantry">
+      <div class="section-head"><h2>🧊 내 냉장고</h2><span id="count" class="counter">0개</span></div>
+      <p class="muted">재료와 소비기한을 등록하세요. 소비기한 입력은 선택이에요.</p>
+      <form id="add-form" class="add-form"><label for="name">재료 이름</label><input id="name" maxlength="50" placeholder="예: 계란, 양파, 감자" required /><label for="expiry">소비기한 (선택)</label><input id="expiry" type="date"/><button class="btn primary" type="submit">+ 재료 추가</button></form>
+      <h3 class="subheading">보유 재료</h3><div id="ingredients" class="ingredients"><p class="muted">재료를 추가해 주세요.</p></div>
+      <div class="hint">💡 소비기한이 3일 이내로 남은 재료는 먼저 사용하도록 AI에 요청해요. 기한이 지난 재료는 안전 상태를 확인하고 사용하지 마세요.</div>
+    </section>
+    <section class="card generator">
+      <div class="section-head"><h2>🪄 AI 레시피 추천</h2></div><p class="muted">원하는 조건을 선택하면 요리 3가지를 추천해요.</p>
+      <div class="options"><div><label for="time">최대 조리 시간</label><select id="time"><option value="15">15분</option><option value="30" selected>30분</option><option value="60">1시간</option><option value="120">2시간</option></select></div><div><label for="difficulty">난이도</label><select id="difficulty"><option value="상관없음">상관없음</option><option value="쉬움" selected>쉬움</option><option value="보통">보통</option><option value="어려움">어려움</option></select></div></div>
+      <button id="recommend" class="btn primary recommend-btn">✨ AI 레시피 추천받기</button><p id="notice" class="notice" role="status" aria-live="polite"></p>
+      <div class="results-head"><h3>추천 레시피</h3><span id="mode" class="mode"></span></div>
+      <div id="recipes" class="recipes"><div class="empty">🥘<br/>재료를 등록하고 추천 버튼을 눌러 보세요!</div></div>
+    </section>
+  </div>
+  <section class="card saved"><div class="section-head"><h2>❤️ 저장한 레시피</h2><button id="reload-favorites" class="btn secondary small">새로고침</button></div><div id="favorites" class="recipes favorites"><p class="muted">저장한 레시피가 아직 없어요.</p></div></section>
+</main>
+<footer>Made with 🥑 & AI · Fridge Chef</footer>
+<dialog id="recipe-dialog"><div class="dialog-inner"><button id="close-dialog" class="dialog-close" aria-label="닫기">✕</button><div id="recipe-detail"></div></div></dialog>
+</body></html>
